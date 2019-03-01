@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next mist" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<link rel="stylesheet" href="/live2d/css/live2d.css" />
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Protocol," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言本篇文章主要用于应付《网络安全协议期末》考试 文章结构 Motivation IP协议的安全缺陷（遭受欺骗攻击：伪造源IP地址。缺乏保密性和数据完整性保护：遭受被动/主动攻击） 虚拟专用网解决方案1：解决方案2：  IPSec概述安全服务 保密性 数据完整性 访问控制 数据源认证根据安全策略（针对安全需求给出的一系列解决方案，它决定了对什么样的通信实施安全保护以及何种安全保护）对IP数据报进行">
+<meta name="keywords" content="Protocol">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IPSec协议">
+<meta property="og:url" content="http://blog.abnor19.xyz/2018/12/28/IPSec协议/index.html">
+<meta property="og:site_name" content="Silence&#39;s Blog">
+<meta property="og:description" content="前言本篇文章主要用于应付《网络安全协议期末》考试 文章结构 Motivation IP协议的安全缺陷（遭受欺骗攻击：伪造源IP地址。缺乏保密性和数据完整性保护：遭受被动/主动攻击） 虚拟专用网解决方案1：解决方案2：  IPSec概述安全服务 保密性 数据完整性 访问控制 数据源认证根据安全策略（针对安全需求给出的一系列解决方案，它决定了对什么样的通信实施安全保护以及何种安全保护）对IP数据报进行">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-1.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-2.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-3.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-4.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-5.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-6.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-7.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-8.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-31.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-10.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-32.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-33.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-34.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-9.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-12.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-13.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-14.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-15.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-16.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-18.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-17.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-19.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-20.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-21.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-22.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-23.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-24.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-30.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-25.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-26.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-27.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-28.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-29.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-35.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-36.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-37.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-38.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-39.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-40.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-41.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-42.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-43.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-44.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-45.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-46.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-47.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-48.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-49.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-50.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-51.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-52.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-53.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-54.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-55.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-56.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/IPSec-57.png">
+<meta property="og:updated_time" content="2019-01-23T09:18:04.996Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IPSec协议">
+<meta name="twitter:description" content="前言本篇文章主要用于应付《网络安全协议期末》考试 文章结构 Motivation IP协议的安全缺陷（遭受欺骗攻击：伪造源IP地址。缺乏保密性和数据完整性保护：遭受被动/主动攻击） 虚拟专用网解决方案1：解决方案2：  IPSec概述安全服务 保密性 数据完整性 访问控制 数据源认证根据安全策略（针对安全需求给出的一系列解决方案，它决定了对什么样的通信实施安全保护以及何种安全保护）对IP数据报进行">
+<meta name="twitter:image" content="http://blog.abnor19.xyz/images/IPSec-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Silence'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.abnor19.xyz/2018/12/28/IPSec协议/"/>
+
+
+
+
+
+  <title>IPSec协议 | Silence's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/huhu2017" class="github-corner" aria-label="View source on Github">
+<svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+<path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+<path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>	
+	
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Silence's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">仆卧香炉顶，餐霞漱瑶泉。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            个人信息
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.abnor19.xyz/2018/12/28/IPSec协议/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Silence">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/moha.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Silence's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">IPSec协议</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-28T15:49:15+08:00">
+                2018-12-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Security-Protocol/" itemprop="url" rel="index">
+                    <span itemprop="name">Security Protocol</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/28/IPSec协议/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/28/IPSec协议/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本篇文章主要用于应付《网络安全协议期末》考试</p>
+<h1 id="文章结构"><a href="#文章结构" class="headerlink" title="文章结构"></a>文章结构</h1><p><img src="/images/IPSec-1.png" alt=""></p>
+<h1 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h1><ul>
+<li>IP协议的安全缺陷（遭受欺骗攻击：伪造源IP地址。缺乏保密性和数据完整性保护：遭受被动/主动攻击）</li>
+<li>虚拟专用网<br><img src="/images/IPSec-2.png" alt=""><br>解决方案1：<br><img src="/images/IPSec-3.png" alt=""><br>解决方案2：<br><img src="/images/IPSec-4.png" alt=""></li>
+</ul>
+<h1 id="IPSec概述"><a href="#IPSec概述" class="headerlink" title="IPSec概述"></a>IPSec概述</h1><h2 id="安全服务"><a href="#安全服务" class="headerlink" title="安全服务"></a>安全服务</h2><ul>
+<li>保密性</li>
+<li>数据完整性</li>
+<li>访问控制</li>
+<li>数据源认证<br>根据<strong>安全策略</strong>（针对安全需求给出的一系列解决方案，它决定了对什么样的通信实施安全保护以及何种安全保护）对IP数据报进行<strong>安全处理</strong>（加密，消息认证码，重新封装）</li>
+</ul>
+<h2 id="处理过程"><a href="#处理过程" class="headerlink" title="处理过程"></a>处理过程</h2><h3 id="协商阶段"><a href="#协商阶段" class="headerlink" title="协商阶段"></a>协商阶段</h3><ul>
+<li>互联网密钥交换协议（IKE）</li>
+<li>通信双方互相认证对方身份，并根据安全策略协商使用的加密，认证算法，生成共享的会话密钥<h3 id="数据交互阶段"><a href="#数据交互阶段" class="headerlink" title="数据交互阶段"></a>数据交互阶段</h3></li>
+<li>认证首部（AH）</li>
+<li>封装安全载荷（ESP）</li>
+<li>通信双方利用协商好的算法和密钥对数据进行安全处理<h4 id="IPSec外出数据处理流程"><a href="#IPSec外出数据处理流程" class="headerlink" title="IPSec外出数据处理流程"></a>IPSec外出数据处理流程</h4><img src="/images/IPSec-5.png" alt=""><br>外出数据：应用IPSec,查询SAD<br><strong>IPSec引擎</strong>根据<strong>安全策略（SP）</strong>和<strong>安全关联（SA）</strong>调用密码算法对IP报文做<strong>安全处理（报文封装）</strong></li>
+</ul>
+<p><img src="/images/IPSec-6.png" alt=""></p>
+<h3 id="安全策略（Security-Policy）"><a href="#安全策略（Security-Policy）" class="headerlink" title="安全策略（Security Policy）"></a>安全策略（Security Policy）</h3><p><img src="/images/IPSec-7.png" alt=""><br>SPD:<br><img src="/images/IPSec-8.png" alt=""></p>
+<h4 id="示例（重点）"><a href="#示例（重点）" class="headerlink" title="示例（重点）"></a><strong>示例（重点）</strong></h4><p><img src="/images/IPSec-31.png" alt=""></p>
+<h3 id="安全关联（Security-Association）"><a href="#安全关联（Security-Association）" class="headerlink" title="安全关联（Security Association）"></a>安全关联（Security Association）</h3><p><img src="/images/IPSec-10.png" alt=""><br><img src="/images/IPSec-32.png" alt=""></p>
+<h4 id="安全关联字段"><a href="#安全关联字段" class="headerlink" title="安全关联字段"></a>安全关联字段</h4><p><img src="/images/IPSec-33.png" alt=""></p>
+<h4 id="安全关联字段示例（重点）"><a href="#安全关联字段示例（重点）" class="headerlink" title="安全关联字段示例（重点）"></a><strong>安全关联字段示例（重点）</strong></h4><p><img src="/images/IPSec-34.png" alt=""></p>
+<h3 id="安全策略-amp-安全关联关系"><a href="#安全策略-amp-安全关联关系" class="headerlink" title="安全策略&amp;安全关联关系"></a>安全策略&amp;安全关联关系</h3><p><img src="/images/IPSec-9.png" alt=""></p>
+<h1 id="IPSec数据封装"><a href="#IPSec数据封装" class="headerlink" title="IPSec数据封装"></a>IPSec数据封装</h1><h2 id="AH（Authentication-Header）"><a href="#AH（Authentication-Header）" class="headerlink" title="AH（Authentication Header）"></a>AH（Authentication Header）</h2><h3 id="AH提供的安全服务："><a href="#AH提供的安全服务：" class="headerlink" title="AH提供的安全服务："></a>AH提供的安全服务：</h3><ul>
+<li>数据完整性（Integrity）</li>
+<li>数据源发认证（Data Origin authentication）</li>
+<li>抗重放攻击（Anti-replay attack）<h3 id="AH特点："><a href="#AH特点：" class="headerlink" title="AH特点："></a>AH特点：</h3></li>
+<li>不对传输的数据提供保密性</li>
+<li>密码学运算开销小</li>
+<li>两种工作模式（传输模式，隧道模式）<h3 id="Transport-mode（传输模式）"><a href="#Transport-mode（传输模式）" class="headerlink" title="Transport mode（传输模式）"></a>Transport mode（传输模式）</h3><img src="/images/IPSec-12.png" alt=""><br><img src="/images/IPSec-13.png" alt=""><br><img src="/images/IPSec-14.png" alt=""><h3 id="Tunnel-mode（隧道模式）"><a href="#Tunnel-mode（隧道模式）" class="headerlink" title="Tunnel mode（隧道模式）"></a>Tunnel mode（隧道模式）</h3><img src="/images/IPSec-15.png" alt=""><h4 id="报文封装"><a href="#报文封装" class="headerlink" title="报文封装"></a>报文封装</h4><img src="/images/IPSec-16.png" alt=""><br><img src="/images/IPSec-18.png" alt=""><h4 id="完整性验证"><a href="#完整性验证" class="headerlink" title="完整性验证"></a>完整性验证</h4><img src="/images/IPSec-17.png" alt=""><h3 id="如何判断隧道模式还是传输模式"><a href="#如何判断隧道模式还是传输模式" class="headerlink" title="如何判断隧道模式还是传输模式"></a>如何判断隧道模式还是传输模式</h3><img src="/images/IPSec-19.png" alt=""></li>
+</ul>
+<h2 id="ESP（Encapsulating-Security-Payload）"><a href="#ESP（Encapsulating-Security-Payload）" class="headerlink" title="ESP（Encapsulating Security Payload）"></a>ESP（Encapsulating Security Payload）</h2><h3 id="ESP提供的安全服务："><a href="#ESP提供的安全服务：" class="headerlink" title="ESP提供的安全服务："></a>ESP提供的安全服务：</h3><ul>
+<li><strong>保密性</strong></li>
+<li>数据完整性</li>
+<li>数据源发认证</li>
+<li>抗重放攻击<h3 id="报文格式"><a href="#报文格式" class="headerlink" title="报文格式"></a>报文格式</h3><img src="/images/IPSec-20.png" alt=""><h4 id="字段说明："><a href="#字段说明：" class="headerlink" title="字段说明："></a>字段说明：</h4></li>
+<li>SPI：协商SA时确定的安全参数索引</li>
+<li>序号：报文编号，用于防止重放攻击</li>
+<li>载荷：加密数据，与应用模式相关</li>
+<li>填充：1.加密算法采用分组加密时，明文数据需要填充。2.数据在一个4-byte边界对齐</li>
+<li>认证数据：变长字段。可选字段，Integrity Check Value(ICV),认证算法必须说明ICV的长度，比较规则和验证的处理步骤<h3 id="Transport-mode（传输模式）-1"><a href="#Transport-mode（传输模式）-1" class="headerlink" title="Transport mode（传输模式）"></a>Transport mode（传输模式）</h3>报文：<br><img src="/images/IPSec-21.png" alt=""><h4 id="报文封装-1"><a href="#报文封装-1" class="headerlink" title="报文封装"></a>报文封装</h4><img src="/images/IPSec-22.png" alt=""><h3 id="Tunnel-mode（隧道模式）-1"><a href="#Tunnel-mode（隧道模式）-1" class="headerlink" title="Tunnel mode（隧道模式）"></a>Tunnel mode（隧道模式）</h3>报文：<br><img src="/images/IPSec-23.png" alt=""><h4 id="报文封装-2"><a href="#报文封装-2" class="headerlink" title="报文封装"></a>报文封装</h4><img src="/images/IPSec-24.png" alt=""><h3 id="发送数据处理过程"><a href="#发送数据处理过程" class="headerlink" title="发送数据处理过程"></a>发送数据处理过程</h3></li>
+</ul>
+<ol>
+<li>查询SAD，获取安全参数</li>
+<li>报文加密</li>
+<li>生成序号</li>
+<li>计算认证数据</li>
+<li>构造IPSec报文并发送<h3 id="接收数据处理过程"><a href="#接收数据处理过程" class="headerlink" title="接收数据处理过程"></a>接收数据处理过程</h3></li>
+<li>根据&lt;目的ip地址，安全协议，SPI&gt;三元组查询SAD，若找不到有效SA，则丢弃报文</li>
+<li>使用滑动窗口机制验证序号，防止重放攻击</li>
+<li>验证认证数据，如果验证失败，则丢弃该报文</li>
+</ol>
+<h1 id="安全参数协商"><a href="#安全参数协商" class="headerlink" title="安全参数协商"></a>安全参数协商</h1><h2 id="IKE（Internet-Key-Exchange）"><a href="#IKE（Internet-Key-Exchange）" class="headerlink" title="IKE（Internet Key Exchange）"></a>IKE（Internet Key Exchange）</h2><p><img src="/images/IPSec-30.png" alt=""><br>IKE功能（<strong>类似TLS Handshake protocol</strong>）</p>
+<ul>
+<li>协商SA</li>
+<li>密钥生成</li>
+<li>身份认证</li>
+</ul>
+<p>应用层协议</p>
+<ul>
+<li>UDP</li>
+<li>Port：500<br><img src="/images/IPSec-25.png" alt=""><h3 id="ISAKMP协商过程"><a href="#ISAKMP协商过程" class="headerlink" title="ISAKMP协商过程"></a>ISAKMP协商过程</h3><img src="/images/IPSec-26.png" alt=""><h3 id="ISAKMP两个概念"><a href="#ISAKMP两个概念" class="headerlink" title="ISAKMP两个概念"></a>ISAKMP两个概念</h3><img src="/images/IPSec-27.png" alt=""><h3 id="ISAKMP报文示例"><a href="#ISAKMP报文示例" class="headerlink" title="ISAKMP报文示例"></a>ISAKMP报文示例</h3><img src="/images/IPSec-28.png" alt=""><h3 id="ISAKMP总结"><a href="#ISAKMP总结" class="headerlink" title="ISAKMP总结"></a>ISAKMP总结</h3><img src="/images/IPSec-29.png" alt=""><h2 id="IKE1"><a href="#IKE1" class="headerlink" title="IKE1"></a>IKE1</h2><h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3></li>
+<li>SA协商</li>
+<li>密钥生成</li>
+<li>身份认证<br><img src="/images/IPSec-35.png" alt=""></li>
+</ul>
+<h3 id="SA协商的SA属性"><a href="#SA协商的SA属性" class="headerlink" title="SA协商的SA属性"></a>SA协商的SA属性</h3><p><img src="/images/IPSec-36.png" alt=""><br><img src="/images/IPSec-37.png" alt=""></p>
+<h3 id="SA属性：伪随机函数（PRF）"><a href="#SA属性：伪随机函数（PRF）" class="headerlink" title="SA属性：伪随机函数（PRF）"></a>SA属性：伪随机函数（PRF）</h3><p><img src="/images/IPSec-38.png" alt=""><br><img src="/images/IPSec-39.png" alt=""></p>
+<h3 id="IKE：身份认证方法"><a href="#IKE：身份认证方法" class="headerlink" title="IKE：身份认证方法"></a>IKE：身份认证方法</h3><p><img src="/images/IPSec-40.png" alt=""></p>
+<h3 id="主模式：使用数字签名认证方法"><a href="#主模式：使用数字签名认证方法" class="headerlink" title="主模式：使用数字签名认证方法"></a>主模式：使用数字签名认证方法</h3><p><img src="/images/IPSec-41.png" alt=""></p>
+<ul>
+<li>1，2报文完成SA协商</li>
+<li>3，4报文传输密钥交换信息和随机数，完成密钥交换</li>
+<li>5，6报文进行身份和认证信息交换。<br><img src="/images/IPSec-42.png" alt=""><h3 id="主模式：使用公钥加密认证方法"><a href="#主模式：使用公钥加密认证方法" class="headerlink" title="主模式：使用公钥加密认证方法"></a>主模式：使用公钥加密认证方法</h3><img src="/images/IPSec-43.png" alt=""><br>1，2报文完成SA协商<br>3，4报文进行密钥交换和用对端公钥加密的身份信息及随机数<br>5，6报文中可选的HASH（1）用于说明所使用的回应方公钥，其输入为所选公钥对应的证书<br>另外两种算法略<h3 id="野蛮模式"><a href="#野蛮模式" class="headerlink" title="野蛮模式"></a>野蛮模式</h3></li>
+<li>基于ISAKMP的野蛮交换</li>
+<li>协议细节依赖于身份认证方法</li>
+<li>传输内容与主模式相似，但是报文数量和报文内容不同<h3 id="野蛮模式：使用数字签名"><a href="#野蛮模式：使用数字签名" class="headerlink" title="野蛮模式：使用数字签名"></a>野蛮模式：使用数字签名</h3><img src="/images/IPSec-44.png" alt=""><br><img src="/images/IPSec-45.png" alt=""><h3 id="野蛮模式：使用公钥加密"><a href="#野蛮模式：使用公钥加密" class="headerlink" title="野蛮模式：使用公钥加密"></a>野蛮模式：使用公钥加密</h3><img src="/images/IPSec-46.png" alt=""><br><img src="/images/IPSec-47.png" alt=""><br>另外两种算法略<h3 id="IKE第二阶段：快速模式"><a href="#IKE第二阶段：快速模式" class="headerlink" title="IKE第二阶段：快速模式"></a>IKE第二阶段：快速模式</h3><img src="/images/IPSec-48.png" alt=""><h4 id="hash值的计算"><a href="#hash值的计算" class="headerlink" title="hash值的计算"></a>hash值的计算</h4><img src="/images/IPSec-49.png" alt=""><h4 id="密钥生成素材（略）"><a href="#密钥生成素材（略）" class="headerlink" title="密钥生成素材（略）"></a>密钥生成素材（略）</h4><h4 id="协商多个SA"><a href="#协商多个SA" class="headerlink" title="协商多个SA"></a>协商多个SA</h4><img src="/images/IPSec-50.png" alt=""><h4 id="新群模式"><a href="#新群模式" class="headerlink" title="新群模式"></a>新群模式</h4><img src="/images/IPSec-51.png" alt=""><h2 id="IKEv1的不足"><a href="#IKEv1的不足" class="headerlink" title="IKEv1的不足"></a>IKEv1的不足</h2><img src="/images/IPSec-52.png" alt=""><h2 id="IKEv2"><a href="#IKEv2" class="headerlink" title="IKEv2"></a>IKEv2</h2><h3 id="信息交互"><a href="#信息交互" class="headerlink" title="信息交互"></a>信息交互</h3><img src="/images/IPSec-53.png" alt=""><br>细节解析：<br><img src="/images/IPSec-54.png" alt=""><br><img src="/images/IPSec-55.png" alt=""><br><strong>IKE_AUTH交换</strong><br><img src="/images/IPSec-56.png" alt=""><br><img src="/images/IPSec-57.png" alt=""></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Silence
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://blog.abnor19.xyz/2018/12/28/IPSec协议/" title="IPSec协议">http://blog.abnor19.xyz/2018/12/28/IPSec协议/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Protocol/" rel="tag"><i class="fa fa-tag"></i> Protocol</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/27/TLS协议/" rel="next" title="TLS协议">
+                <i class="fa fa-chevron-left"></i> TLS协议
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/29/信息安全工程考点内容/" rel="prev" title="信息安全工程考点内容">
+                信息安全工程考点内容 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/moha.png"
+                alt="Silence" />
+            
+              <p class="site-author-name" itemprop="name">Silence</p>
+              <p class="site-description motion-element" itemprop="description">blog</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/huhu2017" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文章结构"><span class="nav-number">2.</span> <span class="nav-text">文章结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Motivation"><span class="nav-number">3.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IPSec概述"><span class="nav-number">4.</span> <span class="nav-text">IPSec概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安全服务"><span class="nav-number">4.1.</span> <span class="nav-text">安全服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理过程"><span class="nav-number">4.2.</span> <span class="nav-text">处理过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#协商阶段"><span class="nav-number">4.2.1.</span> <span class="nav-text">协商阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据交互阶段"><span class="nav-number">4.2.2.</span> <span class="nav-text">数据交互阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#IPSec外出数据处理流程"><span class="nav-number">4.2.2.1.</span> <span class="nav-text">IPSec外出数据处理流程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安全策略（Security-Policy）"><span class="nav-number">4.2.3.</span> <span class="nav-text">安全策略（Security Policy）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例（重点）"><span class="nav-number">4.2.3.1.</span> <span class="nav-text">示例（重点）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安全关联（Security-Association）"><span class="nav-number">4.2.4.</span> <span class="nav-text">安全关联（Security Association）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安全关联字段"><span class="nav-number">4.2.4.1.</span> <span class="nav-text">安全关联字段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安全关联字段示例（重点）"><span class="nav-number">4.2.4.2.</span> <span class="nav-text">安全关联字段示例（重点）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安全策略-amp-安全关联关系"><span class="nav-number">4.2.5.</span> <span class="nav-text">安全策略&amp;安全关联关系</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IPSec数据封装"><span class="nav-number">5.</span> <span class="nav-text">IPSec数据封装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AH（Authentication-Header）"><span class="nav-number">5.1.</span> <span class="nav-text">AH（Authentication Header）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AH提供的安全服务："><span class="nav-number">5.1.1.</span> <span class="nav-text">AH提供的安全服务：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AH特点："><span class="nav-number">5.1.2.</span> <span class="nav-text">AH特点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transport-mode（传输模式）"><span class="nav-number">5.1.3.</span> <span class="nav-text">Transport mode（传输模式）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tunnel-mode（隧道模式）"><span class="nav-number">5.1.4.</span> <span class="nav-text">Tunnel mode（隧道模式）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#报文封装"><span class="nav-number">5.1.4.1.</span> <span class="nav-text">报文封装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#完整性验证"><span class="nav-number">5.1.4.2.</span> <span class="nav-text">完整性验证</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何判断隧道模式还是传输模式"><span class="nav-number">5.1.5.</span> <span class="nav-text">如何判断隧道模式还是传输模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ESP（Encapsulating-Security-Payload）"><span class="nav-number">5.2.</span> <span class="nav-text">ESP（Encapsulating Security Payload）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ESP提供的安全服务："><span class="nav-number">5.2.1.</span> <span class="nav-text">ESP提供的安全服务：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#报文格式"><span class="nav-number">5.2.2.</span> <span class="nav-text">报文格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#字段说明："><span class="nav-number">5.2.2.1.</span> <span class="nav-text">字段说明：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transport-mode（传输模式）-1"><span class="nav-number">5.2.3.</span> <span class="nav-text">Transport mode（传输模式）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#报文封装-1"><span class="nav-number">5.2.3.1.</span> <span class="nav-text">报文封装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tunnel-mode（隧道模式）-1"><span class="nav-number">5.2.4.</span> <span class="nav-text">Tunnel mode（隧道模式）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#报文封装-2"><span class="nav-number">5.2.4.1.</span> <span class="nav-text">报文封装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发送数据处理过程"><span class="nav-number">5.2.5.</span> <span class="nav-text">发送数据处理过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接收数据处理过程"><span class="nav-number">5.2.6.</span> <span class="nav-text">接收数据处理过程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安全参数协商"><span class="nav-number">6.</span> <span class="nav-text">安全参数协商</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IKE（Internet-Key-Exchange）"><span class="nav-number">6.1.</span> <span class="nav-text">IKE（Internet Key Exchange）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ISAKMP协商过程"><span class="nav-number">6.1.1.</span> <span class="nav-text">ISAKMP协商过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ISAKMP两个概念"><span class="nav-number">6.1.2.</span> <span class="nav-text">ISAKMP两个概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ISAKMP报文示例"><span class="nav-number">6.1.3.</span> <span class="nav-text">ISAKMP报文示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ISAKMP总结"><span class="nav-number">6.1.4.</span> <span class="nav-text">ISAKMP总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IKE1"><span class="nav-number">6.2.</span> <span class="nav-text">IKE1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#功能"><span class="nav-number">6.2.1.</span> <span class="nav-text">功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SA协商的SA属性"><span class="nav-number">6.2.2.</span> <span class="nav-text">SA协商的SA属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SA属性：伪随机函数（PRF）"><span class="nav-number">6.2.3.</span> <span class="nav-text">SA属性：伪随机函数（PRF）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IKE：身份认证方法"><span class="nav-number">6.2.4.</span> <span class="nav-text">IKE：身份认证方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主模式：使用数字签名认证方法"><span class="nav-number">6.2.5.</span> <span class="nav-text">主模式：使用数字签名认证方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主模式：使用公钥加密认证方法"><span class="nav-number">6.2.6.</span> <span class="nav-text">主模式：使用公钥加密认证方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#野蛮模式"><span class="nav-number">6.2.7.</span> <span class="nav-text">野蛮模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#野蛮模式：使用数字签名"><span class="nav-number">6.2.8.</span> <span class="nav-text">野蛮模式：使用数字签名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#野蛮模式：使用公钥加密"><span class="nav-number">6.2.9.</span> <span class="nav-text">野蛮模式：使用公钥加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IKE第二阶段：快速模式"><span class="nav-number">6.2.10.</span> <span class="nav-text">IKE第二阶段：快速模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#hash值的计算"><span class="nav-number">6.2.10.1.</span> <span class="nav-text">hash值的计算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#密钥生成素材（略）"><span class="nav-number">6.2.10.2.</span> <span class="nav-text">密钥生成素材（略）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#协商多个SA"><span class="nav-number">6.2.10.3.</span> <span class="nav-text">协商多个SA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新群模式"><span class="nav-number">6.2.10.4.</span> <span class="nav-text">新群模式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IKEv1的不足"><span class="nav-number">6.3.</span> <span class="nav-text">IKEv1的不足</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IKEv2"><span class="nav-number">6.4.</span> <span class="nav-text">IKEv2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#信息交互"><span class="nav-number">6.4.1.</span> <span class="nav-text">信息交互</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Silence</span>
+
+  <!-- 血小板 -->
+  <div id="landlord">
+      <div class="message" style="opacity:0"></div>
+      <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+      <div class="hide-button">隐藏</div>
+  </div>
+  
+  <!-- live2d 血小板 -->
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+    var message_Path = '/live2d/'
+    var home_Path = 'https://haremu.com/'
+</script>
+<script type="text/javascript" src="/live2d/js/live2d.js"></script>
+<script type="text/javascript" src="/live2d/js/message.js"></script>
+<script type="text/javascript">
+    loadlive2d("live2d", "/live2d/model/xiaoban/model.json");
+</script>
+  
+  
+</div>
+
+<!--
+
+<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+-->
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '62dWD1Ark9T07fkkjlY1iBRK-gzGzoHsz',
+        appKey: 'VNga7zLbd3NKSlP8E6dqDd8p',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+  <!-- 页面点击+ 1 S -->
+<script type="text/javascript" src="/js/src/moha.js"></script>
+
+</body>
+</html>

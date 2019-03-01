@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next mist" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<link rel="stylesheet" href="/live2d/css/live2d.css" />
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="《Python3网络爬虫开发实战》读书笔记为了更方便处理网页验证和Cookies等高级操作，引入requests requests基本用法具体实例12345678910import requestsurl = &apos;https://www.taobao.com&apos;r = requests.get(url)  # GET请求# r = requests.post(url)  # POST请求# r = r">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络爬虫 其三">
+<meta property="og:url" content="http://blog.abnor19.xyz/2019/01/23/网络爬虫3/index.html">
+<meta property="og:site_name" content="Silence&#39;s Blog">
+<meta property="og:description" content="《Python3网络爬虫开发实战》读书笔记为了更方便处理网页验证和Cookies等高级操作，引入requests requests基本用法具体实例12345678910import requestsurl = &apos;https://www.taobao.com&apos;r = requests.get(url)  # GET请求# r = requests.post(url)  # POST请求# r = r">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/网络爬虫5.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/网络爬虫6.png">
+<meta property="og:image" content="http://blog.abnor19.xyz/images/网络爬虫7.png">
+<meta property="og:updated_time" content="2019-01-29T03:29:00.572Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网络爬虫 其三">
+<meta name="twitter:description" content="《Python3网络爬虫开发实战》读书笔记为了更方便处理网页验证和Cookies等高级操作，引入requests requests基本用法具体实例12345678910import requestsurl = &apos;https://www.taobao.com&apos;r = requests.get(url)  # GET请求# r = requests.post(url)  # POST请求# r = r">
+<meta name="twitter:image" content="http://blog.abnor19.xyz/images/网络爬虫5.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Silence'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.abnor19.xyz/2019/01/23/网络爬虫3/"/>
+
+
+
+
+
+  <title>网络爬虫 其三 | Silence's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/huhu2017" class="github-corner" aria-label="View source on Github">
+<svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+<path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+<path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>	
+	
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Silence's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">仆卧香炉顶，餐霞漱瑶泉。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            个人信息
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.abnor19.xyz/2019/01/23/网络爬虫3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Silence">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/moha.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Silence's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">网络爬虫 其三</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-23T18:12:23+08:00">
+                2019-01-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web-Crawler/" itemprop="url" rel="index">
+                    <span itemprop="name">Web Crawler</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/23/网络爬虫3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/23/网络爬虫3/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="《Python3网络爬虫开发实战》读书笔记"><a href="#《Python3网络爬虫开发实战》读书笔记" class="headerlink" title="《Python3网络爬虫开发实战》读书笔记"></a>《Python3网络爬虫开发实战》读书笔记</h1><p>为了<strong>更方便</strong>处理网页验证和Cookies等高级操作，引入requests</p>
+<h2 id="requests基本用法"><a href="#requests基本用法" class="headerlink" title="requests基本用法"></a>requests基本用法</h2><h3 id="具体实例"><a href="#具体实例" class="headerlink" title="具体实例"></a>具体实例</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">'https://www.taobao.com'</span></span><br><span class="line">r = requests.get(url)  <span class="comment"># GET请求</span></span><br><span class="line"><span class="comment"># r = requests.post(url)  # POST请求</span></span><br><span class="line"><span class="comment"># r = requests.put(url)  # PUT请求</span></span><br><span class="line"><span class="comment"># r = requests.delete(url)  # DELETE请求</span></span><br><span class="line">print(r.status_code)  <span class="comment"># 打印状态码</span></span><br><span class="line">print(r.text)  <span class="comment"># 响应的内容</span></span><br><span class="line">print(r.cookies)  <span class="comment"># Cookies</span></span><br></pre></td></tr></table></figure></div>
+<h3 id="GET请求"><a href="#GET请求" class="headerlink" title="GET请求"></a>GET请求</h3><h4 id="GET请求添加额外信息"><a href="#GET请求添加额外信息" class="headerlink" title="GET请求添加额外信息"></a>GET请求添加额外信息</h4><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">'https://www.httpbin.org/get'</span></span><br><span class="line">data =&#123;</span><br><span class="line">    <span class="string">'name'</span>: <span class="string">'haha'</span>,</span><br><span class="line">    <span class="string">'age'</span>: <span class="number">93</span></span><br><span class="line">&#125;</span><br><span class="line">r = requests.get(url, params=data)  <span class="comment"># GET请求</span></span><br><span class="line">print(r.text)  <span class="comment"># 响应的内容</span></span><br><span class="line">print(type(r.json()))  <span class="comment"># 输出：&lt;class 'dict'&gt;</span></span><br><span class="line">print(type(r.text))  <span class="comment"># 输出：&lt;class 'str'&gt;</span></span><br></pre></td></tr></table></figure></div>
+<p>注意：返回类型是json格式的，想要解析返回结果得到一个字典格式，直接调用json()方法。</p>
+<h4 id="抓取知乎-发现的网页"><a href="#抓取知乎-发现的网页" class="headerlink" title="抓取知乎.发现的网页"></a>抓取知乎.发现的网页</h4><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">url = <span class="string">'https://www.zhihu.com/explore'</span></span><br><span class="line">headers = &#123;<span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWe bKit/537.36 (KHTML, like Gecko) '</span></span><br><span class="line">                         <span class="string">'Chrome/55.0.2883.87 Safari/537.36'</span>&#125;</span><br><span class="line">r = requests.get(url, headers=headers)</span><br><span class="line"></span><br><span class="line">pattern = re.compile(<span class="string">'explore-feed.*?question_link.*?&gt;(.*?)&lt;/a&gt;'</span>, re.S)</span><br><span class="line">titles = re.findall(pattern, r.text)</span><br><span class="line">print(titles)</span><br></pre></td></tr></table></figure></div>
+<p>输出：<br>[‘\n为什么凸优化这么重要？\n’, ‘\n你家爱豆都说过什么感人的或励志的话？\n’, ‘\n怎样写一封得体的电子邮件？\n’, ‘\n为什么星际玩家会眼残？\n’, ‘\n如何评价英雄联盟历史上唯一上单 FMVP Marin（张庆欢）宣布退役？他的职业生涯有哪些传奇？\n’, ‘\n为什么黄磊的女儿黄多多这么优秀？\n’, ‘\n1/a＝1/b＋1/c＋1/d＋…＋1/n 有什么特殊内涵吗？\n’, ‘\n如何看待朱一龙在《知否知否应是绿肥红瘦》中的表现？\n’, ‘\n如何评价杨超越赖美云傅菁三人的合作歌曲《101个愿望》？\n’, ‘\n粉团体中的非人气成员是什么体验？\n’]</p>
+<h4 id="抓取二进制数据并保存（二进制数据：图像，音频，视频文件等）"><a href="#抓取二进制数据并保存（二进制数据：图像，音频，视频文件等）" class="headerlink" title="抓取二进制数据并保存（二进制数据：图像，音频，视频文件等）"></a>抓取二进制数据并保存（二进制数据：图像，音频，视频文件等）</h4><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url = <span class="string">'https://www.github.com/favicon.ico'</span></span><br><span class="line">r = requests.get(url)</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'github_favicon.ico'</span>, <span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(r.content)</span><br></pre></td></tr></table></figure></div>
+<h4 id="返回码和相应查询条件（status-codes-py）"><a href="#返回码和相应查询条件（status-codes-py）" class="headerlink" title="返回码和相应查询条件（status_codes.py）"></a>返回码和相应查询条件（status_codes.py）</h4><p>例：状态码200表示，requests.codes.ok<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">_codes = &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Informational.</span></span><br><span class="line">    <span class="number">100</span>: (<span class="string">'continue'</span>,),</span><br><span class="line">    <span class="number">101</span>: (<span class="string">'switching_protocols'</span>,),</span><br><span class="line">    <span class="number">102</span>: (<span class="string">'processing'</span>,),</span><br><span class="line">    <span class="number">103</span>: (<span class="string">'checkpoint'</span>,),</span><br><span class="line">    <span class="number">122</span>: (<span class="string">'uri_too_long'</span>, <span class="string">'request_uri_too_long'</span>),</span><br><span class="line">    <span class="number">200</span>: (<span class="string">'ok'</span>, <span class="string">'okay'</span>, <span class="string">'all_ok'</span>, <span class="string">'all_okay'</span>, <span class="string">'all_good'</span>, <span class="string">'\\o/'</span>, <span class="string">'✓'</span>),</span><br><span class="line">    <span class="number">201</span>: (<span class="string">'created'</span>,),</span><br><span class="line">    <span class="number">202</span>: (<span class="string">'accepted'</span>,),</span><br><span class="line">    <span class="number">203</span>: (<span class="string">'non_authoritative_info'</span>, <span class="string">'non_authoritative_information'</span>),</span><br><span class="line">    <span class="number">204</span>: (<span class="string">'no_content'</span>,),</span><br><span class="line">    <span class="number">205</span>: (<span class="string">'reset_content'</span>, <span class="string">'reset'</span>),</span><br><span class="line">    <span class="number">206</span>: (<span class="string">'partial_content'</span>, <span class="string">'partial'</span>),</span><br><span class="line">    <span class="number">207</span>: (<span class="string">'multi_status'</span>, <span class="string">'multiple_status'</span>, <span class="string">'multi_stati'</span>, <span class="string">'multiple_stati'</span>),</span><br><span class="line">    <span class="number">208</span>: (<span class="string">'already_reported'</span>,),</span><br><span class="line">    <span class="number">226</span>: (<span class="string">'im_used'</span>,),</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Redirection.</span></span><br><span class="line">    <span class="number">300</span>: (<span class="string">'multiple_choices'</span>,),</span><br><span class="line">    <span class="number">301</span>: (<span class="string">'moved_permanently'</span>, <span class="string">'moved'</span>, <span class="string">'\\o-'</span>),</span><br><span class="line">    <span class="number">302</span>: (<span class="string">'found'</span>,),</span><br><span class="line">    <span class="number">303</span>: (<span class="string">'see_other'</span>, <span class="string">'other'</span>),</span><br><span class="line">    <span class="number">304</span>: (<span class="string">'not_modified'</span>,),</span><br><span class="line">    <span class="number">305</span>: (<span class="string">'use_proxy'</span>,),</span><br><span class="line">    <span class="number">306</span>: (<span class="string">'switch_proxy'</span>,),</span><br><span class="line">    <span class="number">307</span>: (<span class="string">'temporary_redirect'</span>, <span class="string">'temporary_moved'</span>, <span class="string">'temporary'</span>),</span><br><span class="line">    <span class="number">308</span>: (<span class="string">'permanent_redirect'</span>,</span><br><span class="line">          <span class="string">'resume_incomplete'</span>, <span class="string">'resume'</span>,),  <span class="comment"># These 2 to be removed in 3.0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Client Error.</span></span><br><span class="line">    <span class="number">400</span>: (<span class="string">'bad_request'</span>, <span class="string">'bad'</span>),</span><br><span class="line">    <span class="number">401</span>: (<span class="string">'unauthorized'</span>,),</span><br><span class="line">    <span class="number">402</span>: (<span class="string">'payment_required'</span>, <span class="string">'payment'</span>),</span><br><span class="line">    <span class="number">403</span>: (<span class="string">'forbidden'</span>,),</span><br><span class="line">    <span class="number">404</span>: (<span class="string">'not_found'</span>, <span class="string">'-o-'</span>),</span><br><span class="line">    <span class="number">405</span>: (<span class="string">'method_not_allowed'</span>, <span class="string">'not_allowed'</span>),</span><br><span class="line">    <span class="number">406</span>: (<span class="string">'not_acceptable'</span>,),</span><br><span class="line">    <span class="number">407</span>: (<span class="string">'proxy_authentication_required'</span>, <span class="string">'proxy_auth'</span>, <span class="string">'proxy_authentication'</span>),</span><br><span class="line">    <span class="number">408</span>: (<span class="string">'request_timeout'</span>, <span class="string">'timeout'</span>),</span><br><span class="line">    <span class="number">409</span>: (<span class="string">'conflict'</span>,),</span><br><span class="line">    <span class="number">410</span>: (<span class="string">'gone'</span>,),</span><br><span class="line">    <span class="number">411</span>: (<span class="string">'length_required'</span>,),</span><br><span class="line">    <span class="number">412</span>: (<span class="string">'precondition_failed'</span>, <span class="string">'precondition'</span>),</span><br><span class="line">    <span class="number">413</span>: (<span class="string">'request_entity_too_large'</span>,),</span><br><span class="line">    <span class="number">414</span>: (<span class="string">'request_uri_too_large'</span>,),</span><br><span class="line">    <span class="number">415</span>: (<span class="string">'unsupported_media_type'</span>, <span class="string">'unsupported_media'</span>, <span class="string">'media_type'</span>),</span><br><span class="line">    <span class="number">416</span>: (<span class="string">'requested_range_not_satisfiable'</span>, <span class="string">'requested_range'</span>, <span class="string">'range_not_satisfiable'</span>),</span><br><span class="line">    <span class="number">417</span>: (<span class="string">'expectation_failed'</span>,),</span><br><span class="line">    <span class="number">418</span>: (<span class="string">'im_a_teapot'</span>, <span class="string">'teapot'</span>, <span class="string">'i_am_a_teapot'</span>),</span><br><span class="line">    <span class="number">421</span>: (<span class="string">'misdirected_request'</span>,),</span><br><span class="line">    <span class="number">422</span>: (<span class="string">'unprocessable_entity'</span>, <span class="string">'unprocessable'</span>),</span><br><span class="line">    <span class="number">423</span>: (<span class="string">'locked'</span>,),</span><br><span class="line">    <span class="number">424</span>: (<span class="string">'failed_dependency'</span>, <span class="string">'dependency'</span>),</span><br><span class="line">    <span class="number">425</span>: (<span class="string">'unordered_collection'</span>, <span class="string">'unordered'</span>),</span><br><span class="line">    <span class="number">426</span>: (<span class="string">'upgrade_required'</span>, <span class="string">'upgrade'</span>),</span><br><span class="line">    <span class="number">428</span>: (<span class="string">'precondition_required'</span>, <span class="string">'precondition'</span>),</span><br><span class="line">    <span class="number">429</span>: (<span class="string">'too_many_requests'</span>, <span class="string">'too_many'</span>),</span><br><span class="line">    <span class="number">431</span>: (<span class="string">'header_fields_too_large'</span>, <span class="string">'fields_too_large'</span>),</span><br><span class="line">    <span class="number">444</span>: (<span class="string">'no_response'</span>, <span class="string">'none'</span>),</span><br><span class="line">    <span class="number">449</span>: (<span class="string">'retry_with'</span>, <span class="string">'retry'</span>),</span><br><span class="line">    <span class="number">450</span>: (<span class="string">'blocked_by_windows_parental_controls'</span>, <span class="string">'parental_controls'</span>),</span><br><span class="line">    <span class="number">451</span>: (<span class="string">'unavailable_for_legal_reasons'</span>, <span class="string">'legal_reasons'</span>),</span><br><span class="line">    <span class="number">499</span>: (<span class="string">'client_closed_request'</span>,),</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Server Error.</span></span><br><span class="line">    <span class="number">500</span>: (<span class="string">'internal_server_error'</span>, <span class="string">'server_error'</span>, <span class="string">'/o\\'</span>, <span class="string">'✗'</span>),</span><br><span class="line">    <span class="number">501</span>: (<span class="string">'not_implemented'</span>,),</span><br><span class="line">    <span class="number">502</span>: (<span class="string">'bad_gateway'</span>,),</span><br><span class="line">    <span class="number">503</span>: (<span class="string">'service_unavailable'</span>, <span class="string">'unavailable'</span>),</span><br><span class="line">    <span class="number">504</span>: (<span class="string">'gateway_timeout'</span>,),</span><br><span class="line">    <span class="number">505</span>: (<span class="string">'http_version_not_supported'</span>, <span class="string">'http_version'</span>),</span><br><span class="line">    <span class="number">506</span>: (<span class="string">'variant_also_negotiates'</span>,),</span><br><span class="line">    <span class="number">507</span>: (<span class="string">'insufficient_storage'</span>,),</span><br><span class="line">    <span class="number">509</span>: (<span class="string">'bandwidth_limit_exceeded'</span>, <span class="string">'bandwidth'</span>),</span><br><span class="line">    <span class="number">510</span>: (<span class="string">'not_extended'</span>,),</span><br><span class="line">    <span class="number">511</span>: (<span class="string">'network_authentication_required'</span>, <span class="string">'network_auth'</span>, <span class="string">'network_authentication'</span>),</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<h4 id="网页文件上传"><a href="#网页文件上传" class="headerlink" title="网页文件上传"></a>网页文件上传</h4><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">files = &#123;<span class="string">'file'</span>: open(<span class="string">'github_favicon.ico'</span>, <span class="string">'rb'</span>)&#125;</span><br><span class="line">url = <span class="string">"http://www.httpbin.org/post"</span></span><br><span class="line">r = requests.post(url, files=files)</span><br><span class="line">print(r.text)</span><br></pre></td></tr></table></figure></div>
+<h4 id="获取和设置Cookies"><a href="#获取和设置Cookies" class="headerlink" title="获取和设置Cookies"></a>获取和设置Cookies</h4><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">"https://www.baidu.com"</span></span><br><span class="line">r = requests.get(url=url)</span><br><span class="line">print(r.cookies)</span><br><span class="line"><span class="keyword">for</span> key, value <span class="keyword">in</span> r.cookies.items():</span><br><span class="line">    print(key+<span class="string">"="</span>+value)</span><br></pre></td></tr></table></figure></div>
+<h4 id="实例：登录知乎"><a href="#实例：登录知乎" class="headerlink" title="实例：登录知乎"></a>实例：登录知乎</h4><p><strong>Cookie获取方法：F12打开浏览器控制台，依次选择Network-&gt;Name-&gt;<a href="http://www.zhihu.com-&gt;Request" target="_blank" rel="noopener">www.zhihu.com-&gt;Request</a> Headers(请求头)-&gt;cookie,内容复制粘贴即可</strong><br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">"https://www.zhihu.com"</span></span><br><span class="line">headers = &#123;<span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWe bKit/537.36 (KHTML, like Gecko) '</span></span><br><span class="line">                         <span class="string">'Chrome/55.0.2883.87 Safari/537.36'</span>,</span><br><span class="line">           <span class="string">'Host'</span>: <span class="string">'www.zhihu.com'</span>,</span><br><span class="line">           <span class="string">'Cookie'</span>: <span class="string">'自己填'</span>&#125;</span><br><span class="line">r = requests.get(url=url, headers=headers)  <span class="comment"># 下同</span></span><br><span class="line"><span class="comment"># # headers不包含Cookie，使用cookies参数设置</span></span><br><span class="line"><span class="comment"># cookies = '自己填'</span></span><br><span class="line"><span class="comment"># jar = requests.cookies.RequestsCookieJar()</span></span><br><span class="line"><span class="comment"># for cookie in cookies.split(';'):</span></span><br><span class="line"><span class="comment">#     key, value = cookie.split('=', 1)</span></span><br><span class="line"><span class="comment">#     jar.set(key, value)</span></span><br><span class="line"><span class="comment"># r = requests.get(url=url, headers=headers, cookies=jar)</span></span><br><span class="line">print(r.text)</span><br></pre></td></tr></table></figure></div></p>
+<h4 id="会话维持"><a href="#会话维持" class="headerlink" title="会话维持"></a>会话维持</h4><p>思考：每次get()或post()操作相当于两个不同的会话，模拟（伪装）两个浏览器打开页面。<br>解决：维持同一个会话，使用Session对象<br>利用Session。可以做到模拟同一个会话而不担心Cookies的问题。通常用于模拟登录成功后再进行下一步的操作<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">s = requests.Session()</span><br><span class="line">url = <span class="string">"http://httpbin.org/cookies/set/number/2333"</span></span><br><span class="line">r = s.get(<span class="string">'http://httpbin.org/cookies'</span>)</span><br><span class="line">print(r.text)</span><br><span class="line"><span class="comment"># 输出：&#123;</span></span><br><span class="line"><span class="comment">#   "cookies": &#123;</span></span><br><span class="line"><span class="comment">#     "number": "2333"</span></span><br><span class="line"><span class="comment">#   &#125;</span></span><br><span class="line"><span class="comment"># &#125;</span></span><br></pre></td></tr></table></figure></div></p>
+<h4 id="代理设置"><a href="#代理设置" class="headerlink" title="代理设置"></a>代理设置</h4><p>get方法里加个参数proxies，类型为字典形式。</p>
+<h4 id="超时设置"><a href="#超时设置" class="headerlink" title="超时设置"></a>超时设置</h4><p>get方法里加个属性timeout。这个时间计算是发出请求到服务器返回响应的时间。</p>
+<h5 id="请求组成"><a href="#请求组成" class="headerlink" title="请求组成"></a>请求组成</h5><p>分两阶段，连接和读取。如果要分别指定，就传入一个元组<br>例： r= requests.get(url, timeout=(2，4))</p>
+<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p><strong>功能：处理字符串（爬虫角度：从HTML里提取想要的信息）</strong></p>
+<h3 id="常用匹配规则"><a href="#常用匹配规则" class="headerlink" title="常用匹配规则"></a>常用匹配规则</h3><h4 id="常用元字符汇总"><a href="#常用元字符汇总" class="headerlink" title="常用元字符汇总"></a>常用元字符汇总</h4><p><img src="/images/网络爬虫5.png" alt=""></p>
+<h4 id="字符转义"><a href="#字符转义" class="headerlink" title="字符转义"></a>字符转义</h4><p>字符转义用在查找元字符本身，比如查找.或者<em>，为了不让它解释成别的意思，需要用\取消这些字符的特殊含义。应该使用.或者\</em>.<br>对于要查找\本身，需要使用\</p>
+<h4 id="重复"><a href="#重复" class="headerlink" title="重复"></a>重复</h4><p><img src="/images/网络爬虫6.png" alt=""></p>
+<h4 id="反义"><a href="#反义" class="headerlink" title="反义"></a>反义</h4><p>有时需要查找不属于某个能简单定义的字符类的字符。比如想查找除了数字以外，其它任意字符都行的情况，这时需要用到反义：<br>常用的反义代码<br><img src="/images/网络爬虫7.png" alt=""></p>
+<h3 id="匹配方法"><a href="#匹配方法" class="headerlink" title="匹配方法"></a>匹配方法</h3><h4 id="match"><a href="#match" class="headerlink" title="match()"></a>match()</h4><p>从字符串的开头开始匹配<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">match</span><span class="params">(pattern, string, flags=<span class="number">0</span>)</span>:</span></span><br><span class="line">    <span class="string">"""Try to apply the pattern at the start of the string, returning</span></span><br><span class="line"><span class="string">    a match object, or None if no match was found."""</span></span><br><span class="line">    <span class="keyword">return</span> _compile(pattern, flags).match(string)</span><br></pre></td></tr></table></figure></div></p>
+<h5 id="match-用法"><a href="#match-用法" class="headerlink" title="match()用法"></a>match()用法</h5><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">content = <span class="string">'Hello 123 4567 World_This is a Regex Demo'</span></span><br><span class="line">result1 = re.match(<span class="string">'^Hello\s\d&#123;3&#125;\s\d&#123;4&#125;\s\w&#123;10&#125;'</span>, content)</span><br><span class="line">print(result1)  <span class="comment"># &lt;_sre.SRE_Match object; span=(0, 25), match='Hello 123 4567 World_This'&gt;</span></span><br><span class="line">print(result1.group())  <span class="comment"># Hello 123 4567 World_This</span></span><br><span class="line">print(result1.span())  <span class="comment"># (0, 25)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 匹配目标，提取字符串中的子串</span></span><br><span class="line">result2 = re.match(<span class="string">'^Hello\s(\d+)\s\d&#123;4&#125;\sWorld'</span>, content)</span><br><span class="line">print(result2)  <span class="comment"># &lt;_sre.SRE_Match object; span=(0, 20), match='Hello 123 4567 World'&gt;</span></span><br><span class="line">print(result2.group())  <span class="comment"># Hello 123 4567 World</span></span><br><span class="line">print(result2.group(<span class="number">0</span>))  <span class="comment"># Hello 123 4567 World</span></span><br><span class="line">print(result2.group(<span class="number">1</span>))  <span class="comment"># 123</span></span><br><span class="line"><span class="comment"># 还有()时，可用group(2)，group(3)...提取</span></span><br><span class="line">print(result2.span())  <span class="comment"># (0, 20)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 通用匹配</span></span><br><span class="line">result3 = re.match(<span class="string">'^Hello.*Demo$'</span>, content)</span><br><span class="line">print(result3)  <span class="comment"># &lt;_sre.SRE_Match object; span=(0, 41), match='Hello 123 4567 World_This is a Regex Demo'&gt;</span></span><br><span class="line">print(result3.group())  <span class="comment"># Hello 123 4567 World_This is a Regex Demo</span></span><br><span class="line">print(result3.span())  <span class="comment"># (0, 41)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 贪婪与非贪婪</span></span><br><span class="line">new_content = <span class="string">'Hello 1234567 World_This is a Regex Demo'</span></span><br><span class="line">result4 = re.match(<span class="string">'^He.*(\d+).*Demo'</span>, new_content)</span><br><span class="line">print(result4)  <span class="comment"># &lt;_sre.SRE_Match object; span=(0, 40), match='Hello 1234567 World_This is a Regex Demo'&gt;</span></span><br><span class="line">print(result4.group(<span class="number">1</span>))  <span class="comment"># 7, 解释：.*会匹配尽可能多的字符</span></span><br><span class="line"><span class="comment"># 非贪婪</span></span><br><span class="line">result4 = re.match(<span class="string">'^He.*?(\d+).*Demo'</span>, new_content)</span><br><span class="line">print(result4.group(<span class="number">1</span>))  <span class="comment"># 1234567, 解释：.*?匹配尽可能少的字符</span></span><br><span class="line"><span class="comment"># 注意！！！：如果匹配的结果在字符串结尾,.*?有可能不匹配任何内容</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修饰符</span></span><br><span class="line"><span class="comment"># 正则表达式可以包含一些可选标志修饰符来控制匹配的模式</span></span><br><span class="line">new_content = <span class="string">'''Hello 1234567 World_This</span></span><br><span class="line"><span class="string">              is a Regex Demo'''</span></span><br><span class="line">result5 = re.match(<span class="string">'^He.*?(\d+).*?Demo$'</span>, new_content, re.S)</span><br><span class="line">print(result5.group(<span class="number">1</span>))  <span class="comment"># 1234567, re.S作用：使.匹配包括换行符在内的所有字符</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 常用匹配符</span></span><br><span class="line"><span class="comment">#     I  IGNORECASE  Perform case-insensitive matching.</span></span><br><span class="line"><span class="comment">#                    使匹配对大小写不敏感</span></span><br><span class="line"><span class="comment">#     L  LOCALE      Make \w, \W, \b, \B, dependent on the current locale.</span></span><br><span class="line"><span class="comment">#                    做本地化识别匹配</span></span><br><span class="line"><span class="comment">#     M  MULTILINE   "^" matches the beginning of lines (after a newline)</span></span><br><span class="line"><span class="comment">#                    as well as the string.</span></span><br><span class="line"><span class="comment">#                    "$" matches the end of lines (before a newline) as well</span></span><br><span class="line"><span class="comment">#                    as the end of the string.</span></span><br><span class="line"><span class="comment">#                    多行匹配</span></span><br><span class="line"><span class="comment">#     S  DOTALL      "." matches any character at all, including the newline.</span></span><br><span class="line"><span class="comment">#                    使.匹配包括换行符在内的所有字符</span></span><br><span class="line"><span class="comment">#     X  VERBOSE     Ignore whitespace and comments for nicer looking RE's.</span></span><br><span class="line"><span class="comment">#                    忽略字符串里的空格和换行</span></span><br><span class="line"><span class="comment">#     U  UNICODE     For compatibility only. Ignored for string patterns (it</span></span><br><span class="line"><span class="comment">#                    is the default), and forbidden for bytes patterns.</span></span><br><span class="line"><span class="comment">#                    根据Unicode字符集解析字符。这个标志影响\w,\W,\b,\B</span></span><br></pre></td></tr></table></figure></div>
+<h4 id="search"><a href="#search" class="headerlink" title="search()"></a>search()</h4><p>不从字符串头部开始匹配。匹配时扫描整个字符串，然后返回第一个成功匹配的结果。</p>
+<h4 id="findall"><a href="#findall" class="headerlink" title="findall()"></a>findall()</h4><p>获取匹配正则表达式的所有内容。内容保存类型为列表形式，元素保存为元组类型。</p>
+<h4 id="sub"><a href="#sub" class="headerlink" title="sub()"></a>sub()</h4><p>修改字符串<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sub</span><span class="params">(pattern, repl, string, count=<span class="number">0</span>, flags=<span class="number">0</span>)</span>:</span></span><br><span class="line">    <span class="string">"""Return the string obtained by replacing the leftmost</span></span><br><span class="line"><span class="string">    non-overlapping occurrences of the pattern in string by the</span></span><br><span class="line"><span class="string">    replacement repl.  repl can be either a string or a callable;</span></span><br><span class="line"><span class="string">    if a string, backslash escapes in it are processed.  If it is</span></span><br><span class="line"><span class="string">    a callable, it's passed the match object and must return</span></span><br><span class="line"><span class="string">    a replacement string to be used."""</span></span><br></pre></td></tr></table></figure></div></p>
+<p>例：<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">content = <span class="string">'haha93happy'</span></span><br><span class="line">new_content = re.sub(<span class="string">'\d+'</span>, <span class="string">'94'</span>, content)</span><br><span class="line">print(new_content)  <span class="comment"># haha94happy</span></span><br></pre></td></tr></table></figure></div></p>
+<h4 id="compile"><a href="#compile" class="headerlink" title="compile()"></a>compile()</h4><p>将正则字符串编译成正则表达式对象。以便在后面的匹配中<strong>复用</strong>。<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">content = <span class="string">'1926-08-17 00:00'</span></span><br><span class="line">pattern = re.compile(<span class="string">'\d&#123;2&#125;:\d&#123;2&#125;'</span>)</span><br><span class="line">result = re.sub(pattern, <span class="string">''</span>, content)</span><br><span class="line">print(result)  <span class="comment"># 1926-08-17</span></span><br></pre></td></tr></table></figure></div></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Silence
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://blog.abnor19.xyz/2019/01/23/网络爬虫3/" title="网络爬虫 其三">http://blog.abnor19.xyz/2019/01/23/网络爬虫3/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/20/网络爬虫2/" rel="next" title="网络爬虫 其二">
+                <i class="fa fa-chevron-left"></i> 网络爬虫 其二
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/28/网络爬虫4/" rel="prev" title="网络爬虫 其四">
+                网络爬虫 其四 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/moha.png"
+                alt="Silence" />
+            
+              <p class="site-author-name" itemprop="name">Silence</p>
+              <p class="site-description motion-element" itemprop="description">blog</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/huhu2017" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#《Python3网络爬虫开发实战》读书笔记"><span class="nav-number">1.</span> <span class="nav-text">《Python3网络爬虫开发实战》读书笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#requests基本用法"><span class="nav-number">1.1.</span> <span class="nav-text">requests基本用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#具体实例"><span class="nav-number">1.1.1.</span> <span class="nav-text">具体实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GET请求"><span class="nav-number">1.1.2.</span> <span class="nav-text">GET请求</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GET请求添加额外信息"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">GET请求添加额外信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#抓取知乎-发现的网页"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">抓取知乎.发现的网页</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#抓取二进制数据并保存（二进制数据：图像，音频，视频文件等）"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">抓取二进制数据并保存（二进制数据：图像，音频，视频文件等）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回码和相应查询条件（status-codes-py）"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">返回码和相应查询条件（status_codes.py）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网页文件上传"><span class="nav-number">1.1.2.5.</span> <span class="nav-text">网页文件上传</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取和设置Cookies"><span class="nav-number">1.1.2.6.</span> <span class="nav-text">获取和设置Cookies</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例：登录知乎"><span class="nav-number">1.1.2.7.</span> <span class="nav-text">实例：登录知乎</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#会话维持"><span class="nav-number">1.1.2.8.</span> <span class="nav-text">会话维持</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代理设置"><span class="nav-number">1.1.2.9.</span> <span class="nav-text">代理设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#超时设置"><span class="nav-number">1.1.2.10.</span> <span class="nav-text">超时设置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#请求组成"><span class="nav-number">1.1.2.10.1.</span> <span class="nav-text">请求组成</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式"><span class="nav-number">1.2.</span> <span class="nav-text">正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用匹配规则"><span class="nav-number">1.2.1.</span> <span class="nav-text">常用匹配规则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用元字符汇总"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">常用元字符汇总</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符转义"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">字符转义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重复"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">重复</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反义"><span class="nav-number">1.2.1.4.</span> <span class="nav-text">反义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匹配方法"><span class="nav-number">1.2.2.</span> <span class="nav-text">匹配方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#match"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">match()</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#match-用法"><span class="nav-number">1.2.2.1.1.</span> <span class="nav-text">match()用法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#search"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">search()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#findall"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">findall()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sub"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">sub()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#compile"><span class="nav-number">1.2.2.5.</span> <span class="nav-text">compile()</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Silence</span>
+
+  <!-- 血小板 -->
+  <div id="landlord">
+      <div class="message" style="opacity:0"></div>
+      <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+      <div class="hide-button">隐藏</div>
+  </div>
+  
+  <!-- live2d 血小板 -->
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+    var message_Path = '/live2d/'
+    var home_Path = 'https://haremu.com/'
+</script>
+<script type="text/javascript" src="/live2d/js/live2d.js"></script>
+<script type="text/javascript" src="/live2d/js/message.js"></script>
+<script type="text/javascript">
+    loadlive2d("live2d", "/live2d/model/xiaoban/model.json");
+</script>
+  
+  
+</div>
+
+<!--
+
+<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+-->
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '62dWD1Ark9T07fkkjlY1iBRK-gzGzoHsz',
+        appKey: 'VNga7zLbd3NKSlP8E6dqDd8p',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+  <!-- 页面点击+ 1 S -->
+<script type="text/javascript" src="/js/src/moha.js"></script>
+
+</body>
+</html>
