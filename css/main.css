@@ -188,7 +188,7 @@ body {
   font-family: 'Lato', "STFangsong", "STZhongsong", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   font-size: 14px;
   line-height: 2;
-  color: #555;
+  color: $text-color;
   background: #e0fccf;
 }
 @media (max-width: 767px) {
@@ -966,7 +966,7 @@ pre .javascript .function {
   display: block;
   width: 22px;
   height: 2px;
-  background: #555;
+  background: $text-color;
   border-radius: 1px;
 }
 .btn-bar+.btn-bar {
@@ -1864,7 +1864,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffad71;
+  background: #ffff36;
 }
 .links-of-blogroll {
   font-size: 13px;
