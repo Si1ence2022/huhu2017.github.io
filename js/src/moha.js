@@ -45,6 +45,14 @@
                 createWord(event);
             }
         }
+        var randomColor = function(){    
+
+  return  '#' +    
+    (function(color){    
+    return (color +=  '0123456789abcdef'[Math.floor(Math.random()*16)])    
+      && (color.length == 6) ?  color : arguments.callee(color);    
+  })('');    
+} 
         function createWord(event){
             var d = document.createElement("div");
             hearts.push({
