@@ -1,5 +1,4 @@
 #landlord {
-	margin-left:1120px;
     user-select: none;
     position: fixed;
     left: 30px;
@@ -15,6 +14,7 @@
 #live2d {
     position: relative;
 /*    margin-top:-50px;*/
+    margin-left:1120px;
 }
 
 .message {
