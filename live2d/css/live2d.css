@@ -8,27 +8,27 @@
     z-index: 10000;
     font-size: 0;
     transition: all .3s ease-in-out;
+    margin-left: 1120px
+
 
 }
 
 #live2d {
     position: relative;
 /*    margin-top:-50px;*/
-    margin-left:1120px;
 }
 
 .message {
     opacity: 0;
-    width: 200px;
+    width: 180px;
     height: auto;
-    margin: auto;
+    margin-top: 40px;
     padding: 7px;
     top: -80px;
-    left: 1150px;
     text-align: center;
     border: 1px solid rgba(255,137,255,.4);
     border-radius: 12px;
-    background-color: white;
+    background-color: #FFE4E1;
     box-shadow: 0 3px 15px 2px rgba(255,137,255,.4);
     font-size: 13px;
     font-weight: 400;
@@ -46,7 +46,6 @@
 .hide-button {
     position: absolute;
     top: 10px;
-    right: -1110px;
     /* bottom: 30px; */
     display: none;
     overflow: hidden;
@@ -55,11 +54,12 @@
     height: 20px;
     border: 1px solid rgba(255,137,255,.4);
     border-radius: 12px;
-    background: white;
+    background: #FFE4E1;
     box-shadow: 0 3px 15px 2px rgba(255,137,255,.4);
     text-align: center;
     font-size: 12px;
     cursor: pointer;
+    margin-left: 160px;
 }
 
 .hide-button:hover {
