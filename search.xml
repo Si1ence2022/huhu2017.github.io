@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>太菜了请多学习</title>
+      <link href="/2019/04/09/%E5%A4%AA%E8%8F%9C%E4%BA%86%E8%AF%B7%E5%A4%9A%E5%AD%A6%E4%B9%A0/"/>
+      <url>/2019/04/09/%E5%A4%AA%E8%8F%9C%E4%BA%86%E8%AF%B7%E5%A4%9A%E5%AD%A6%E4%B9%A0/</url>
+      
+        <content type="html"><![CDATA[<h1 id="杂"><a href="#杂" class="headerlink" title="杂"></a>杂</h1><h2 id="2019阿里测试工程师-实习-模拟题"><a href="#2019阿里测试工程师-实习-模拟题" class="headerlink" title="2019阿里测试工程师(实习)模拟题"></a>2019阿里测试工程师(实习)模拟题</h2><p>判断用户春节期间是否累积两日消费满10元且春节期间总消费大于N<br>第一个输入为数组,第二个输入为N<br>例子:<br>4, 4, 500<br>507<br>false<br><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Scanner input = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">double</span>[] nums = <span class="keyword">new</span> <span class="keyword">double</span>[<span class="number">15</span>];</span><br><span class="line">        String[] s = input.nextLine().split(<span class="string">","</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;s.length; i++)&#123;</span><br><span class="line">            nums[i] = Double.valueOf(s[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">double</span> target = Double.valueOf(input.nextLine());</span><br><span class="line">        Main m = <span class="keyword">new</span> Main();</span><br><span class="line">        System.out.println(m.calculateCanGetMoney(nums, target));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">calculateCanGetMoney</span><span class="params">(<span class="keyword">double</span>[] nums,<span class="keyword">double</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">double</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> mincost = <span class="number">0</span>;</span><br><span class="line"><span class="comment">//        boolean twoDays = false;</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)&#123;</span><br><span class="line">            count += nums[i];</span><br><span class="line">            <span class="keyword">if</span> (nums[i]&gt;<span class="number">10</span>) &#123;</span><br><span class="line">                mincost++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (mincost&gt;<span class="number">1</span> &amp;&amp; count&gt;target)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 杂 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 杂 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Vue-Component</title>
       <link href="/2019/03/22/Vue-Component/"/>
       <url>/2019/03/22/Vue-Component/</url>
