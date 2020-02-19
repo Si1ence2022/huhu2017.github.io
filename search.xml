@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Java Learning Note</title>
+      <link href="/2020/01/22/Java-Learning-Note/"/>
+      <url>/2020/01/22/Java-Learning-Note/</url>
+      
+        <content type="html"><![CDATA[<h1 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h1><p>在计算机科学中，反射是指计算机程序在运行时（Run time）可以访问、检测和修改它本身状态或行为的一种能力</p><p>#java反射<br>java反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意方法和属性；这种动态获取信息以及动态调用对象方法的功能称为java语言的反射机制。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>豆瓣影评并生成词云</title>
       <link href="/2019/06/12/%E8%B1%86%E7%93%A3%E5%BD%B1%E8%AF%84%E5%B9%B6%E7%94%9F%E6%88%90%E8%AF%8D%E4%BA%91/"/>
       <url>/2019/06/12/%E8%B1%86%E7%93%A3%E5%BD%B1%E8%AF%84%E5%B9%B6%E7%94%9F%E6%88%90%E8%AF%8D%E4%BA%91/</url>
