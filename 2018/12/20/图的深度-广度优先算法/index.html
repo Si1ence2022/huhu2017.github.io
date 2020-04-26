@@ -812,14 +812,14 @@
   
   <script type="text/javascript">
     var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
+    var guest = 'nick,mail';
     guest = guest.split(',').filter(item=>{
       return GUEST.indexOf(item)>-1;
     });
     new Valine({
         el: '#comments' ,
         verify: false,
-        notify: false,
+        notify: true,
         appId: '62dWD1Ark9T07fkkjlY1iBRK-gzGzoHsz',
         appKey: 'VNga7zLbd3NKSlP8E6dqDd8p',
         placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
